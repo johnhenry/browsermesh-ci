@@ -1,0 +1,32 @@
+name: Publish to npm
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: 'Node.js version'
+        required: false
+        type: string
+        default: '22'
+    secrets:
+      npm-token:
+        description: 'NPM_TOKEN for publishing'
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+      - run: npm test
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
