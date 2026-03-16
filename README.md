@@ -59,7 +59,7 @@ jobs:
 - [andbox](https://github.com/johnhenry/andbox)
 - [ai-matey-middleware-andbox](https://github.com/johnhenry/ai-matey-middleware-andbox)
 - [raijin](https://github.com/johnhenry/raijin)
-- [mesh-servers](https://github.com/johnhenry/mesh-servers)
+- [browsermesh-servers](https://github.com/johnhenry/browsermesh-servers)
 
 ## License
 
